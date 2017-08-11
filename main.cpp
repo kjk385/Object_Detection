@@ -56,6 +56,8 @@ int main()
 	
 	int pin = 7;
 	int pin_flag = 0;
+	wiringPiSetup();
+	pinMode(pin, OUTPUT);
 	
 	SpiOpenPort(0);	
 
@@ -245,7 +247,7 @@ int main()
 											main_maxValue = main_value;
 						
 										}
-									if(main_value < main_minValue) 
+									if(main_value < main_minValue && main_value > 0 ) 
 										{
 											main_minValue = main_value;
 						
@@ -290,6 +292,8 @@ int main()
 									STATUS = "CLEAR";
 								}
 							printf("[ObjectPixelValue = %5.1f] STATUS = %s\n",main_diff,STATUS);
+							//printf("%5.1f\n",main_diff);
+							//usleep(25000);
 						}
 				}		
 		}
